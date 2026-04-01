@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.valimade.shiftshaper.domain.model.ModeWork
 import com.valimade.shiftshaper.ui.components.ExpandableModeWork
 import com.valimade.shiftshaper.ui.components.ExpandableTextField
+import com.valimade.shiftshaper.ui.components.ExpandableTimeRecording
 
 @Composable
 fun DataFillingScreen(modifier: Modifier = Modifier) {
@@ -38,9 +39,9 @@ fun DataFillingScreen(modifier: Modifier = Modifier) {
         ) {
         ExpandableTextField("Маршрут", route) { route = it }
         ExpandableTextField("Смена", shift) { shift = it }
-        ExpandableTextField("Начало смены", initialTime) { initialTime = it }
+        ExpandableTimeRecording("Начало смены") { initialTime = it }
         ExpandableTextField("Место заступления", pointS) { pointS = it }
-        ExpandableTextField("Время окончания смены", endTime) { endTime = it }
+        ExpandableTimeRecording("Время окончания смены") { endTime = it }
         ExpandableTextField("Место окончания смены", pointE) { pointE = it }
         ExpandableModeWork(
             title = "Режим",

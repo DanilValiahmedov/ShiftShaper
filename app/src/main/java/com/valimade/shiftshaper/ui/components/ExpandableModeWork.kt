@@ -36,7 +36,6 @@ import androidx.compose.ui.unit.sp
 import com.valimade.shiftshaper.ui.theme.PrimaryColor
 import com.valimade.shiftshaper.ui.theme.SecondaryColor
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ExpandableModeWork(
     title: String,

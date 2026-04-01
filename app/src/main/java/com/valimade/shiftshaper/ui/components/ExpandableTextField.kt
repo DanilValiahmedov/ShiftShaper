@@ -6,12 +6,16 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -23,8 +27,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.valimade.shiftshaper.ui.theme.PrimaryColor
 import com.valimade.shiftshaper.ui.theme.SecondaryColor
 
@@ -77,20 +83,38 @@ fun ExpandableTextField(
                 onValueChange = onValueChange,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 8.dp),
-
+                    .padding(vertical = 8.dp)
+                    .height(56.dp),
+                textStyle = TextStyle(
+                    fontSize = 16.sp,
+                    color = Color.Black
+                ),
+                singleLine = true,
+                shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.colors(
-                    focusedContainerColor = SecondaryColor,
-                    unfocusedContainerColor = SecondaryColor,
-
-                    focusedIndicatorColor = PrimaryColor,
-                    unfocusedIndicatorColor = PrimaryColor.copy(alpha = 0.5f),
-
+                    focusedTextColor = Color.Black,
+                    unfocusedTextColor = Color.Black.copy(alpha = 0.7f),
                     cursorColor = PrimaryColor,
 
-                    focusedTextColor = Color.Black,
-                    unfocusedTextColor = Color.Black
-                )
+                    focusedContainerColor = SecondaryColor.copy(alpha = 0.05f),
+                    unfocusedContainerColor = SecondaryColor.copy(alpha = 0.03f),
+
+                    focusedIndicatorColor = PrimaryColor,
+                    unfocusedIndicatorColor = PrimaryColor.copy(alpha = 0.3f),
+
+                    focusedLabelColor = PrimaryColor,
+                ),
+                trailingIcon = {
+                    if (value.isNotEmpty()) {
+                        IconButton(onClick = { onValueChange("") }) {
+                            Icon(
+                                imageVector = Icons.Default.Clear,
+                                contentDescription = "Очистить",
+                                tint = PrimaryColor
+                            )
+                        }
+                    }
+                }
             )
         }
     }
